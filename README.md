@@ -1,10 +1,10 @@
 ## Summary
 
-- You're maximising eight unknown functions, one query per function per week.
-- We are starting in week 3, there have been 2 rounds completed. 
-- You choose the ML method, such as random, grid, Bayesian optimisation or manual.
-- You submit your inputs in a precise format via the capstone project portal.
-- You reflect, revise and iterate over several rounds.
+- The challenge was to maximise eight unknown black-box functions (2D to 8D), submitting one query per function per week.
+- Each function started from a small set of initial observations and grew over 11 weekly rounds (R1 to R11) as the portal returned each new output.
+- The method was free to choose. Each function uses Bayesian optimisation with Gaussian-process surrogates and acquisition functions (EI, PI, UCB), with TuRBO trust regions and neural-network cross-checks for some functions. The final query was chosen by hand from the candidates each notebook prints.
+- Inputs were submitted in the portal's exact format: six decimals, hyphen-separated, within [0, 1).
+- The competition has now ended. This repository holds the final pipeline, the data and the documentation.
 
 ## Repository structure
 
