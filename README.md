@@ -27,7 +27,7 @@ bbo_final_pipeline/
 │   ├── f7.ipynb               # ... Function 7
 │   ├── f8.ipynb               # ... Function 8
 │   └── run_all.py             # executes data_handling.ipynb then f1-f8 in order
-└── data/                      # git-ignored; must be present locally
+└── data/
     ├── data.csv               # harmonised dataset read by f1.ipynb-f8.ipynb
     ├── initial_data/
     │   ├── function_1/initial_inputs.npy, initial_outputs.npy
