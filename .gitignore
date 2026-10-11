@@ -21,3 +21,6 @@ env/
 # Editors / IDEs
 .vscode/
 .idea/
+
+# Presentation
+capstone_presentation.pdf

@@ -14,7 +14,6 @@ bbo_final_pipeline/
 ├── HISTORY.md
 ├── DATASHEET.md
 ├── MODEL_CARD.md
-├── capstone_presentation.pdf
 ├── .gitignore
 ├── notebooks/
 │   ├── data_handling.ipynb    # builds data/data.csv from initial_data/ + new_data/
