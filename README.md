@@ -47,73 +47,47 @@ Each function notebook is self-contained and follows the same pattern: a **DATA 
 - f2 to f8 print tables only; f1 has not yet been simplified and still produces plots.
 - Candidates can differ by function: f2 reports local acquisition winners (posterior mean, EI, PI, UCB), f3 searches a consensus of two GPs, f4 compares GP, neural-network and TuRBO proposals, f6 and f7 are TuRBO-1 (scikit-learn and GPyTorch respectively), f5 searches the high-yield corner with raw and log GPs, and f8 only moves off the incumbent if the predicted gain exceeds the model's leave-one-out error. The final query is chosen by hand from these printed options.
 
-### What is this challenge about?
-This capstone project mimics a Bayesian optimisation-style competition, to try to find the maximum of eight unknown black-box functions. You won't have the equations or visuals of these functions up front – just some initial data and the ability to make smart guesses.
+### What was this challenge about?
+
+This capstone project mimicked a Bayesian optimisation-style competition: find the maximum of eight unknown black-box functions. The equations and shapes of the functions were hidden. Only a small set of initial data and the ability to make informed queries were available.
 
 The code for each function is contained in separate workbooks named f1.ipynb, f2.ipynb... f8.ipynb.
 
-Each function simulates a real-world task described below and at the beginning of each workbook, where evaluations are expensive or limited. This is an opportunity to apply intelligent search strategies to a realistic ML challenge. Perfect solutions are not expected. You’re encouraged to demonstrate a sound trial-and-error process throughout the capstone project.
+Each function simulates a real-world task, described below and at the beginning of each workbook, where evaluations are expensive or limited. Perfect solutions were not expected; the aim was to apply sound search strategies and reflect on them as the data grew.
 
-What will you do?
-You’ll be working with eight synthetic black-box functions. These are unknown mathematical functions that accept inputs and return a single output. Your goal is to find the inputs that give the highest possible output for each function.
+The eight functions are synthetic black boxes: unknown mathematical functions that accept inputs and return a single output. Every function is a **maximisation** problem, with increasing dimensionality (2D to 8D), and each began with a small set of known (x, y) observations.
 
-Every function is a maximisation problem. You won't see the internal workings of the functions, but you’ll be able to observe how they respond to different inputs.
+Each week:
 
-Each function is:
+1. The existing data was reviewed (it grew by one point per function each week).
+2. A new input (x) was chosen for each function.
+3. The input was submitted through the capstone project portal in the correct format.
+4. The new output (y) was returned once the submission was processed.
+5. The dataset was updated and the strategy revised.
+6. Each round was followed by a reflection on the method used and why, whether the query was exploration or exploitation, what the latest result showed, and the strategy for the next round.
 
-A maximisation task 
-- Initially represented by known (x, y)  data points.
-- Of increasing dimensionality (from 2D to 8D).
+The process ran for 11 weekly rounds, so each function ends with its initial observations plus 11 queried points.
 
-Each week, you will:
+## Techniques used
 
-1. Review your existing data that grows week by week
-2. Choose a new input (x) point to query per function
-3. Submit your chosen input via the capstone project portal in the correct format
-4. Get the new output (y) once the submission is processed
-5. Update your data set and revise your strategy
-6. After each round, be encouraged to reflect on:
-- What method you used and why
-- Whether your query focused on exploration or exploitation
-- What the latest result taught you
-- What your strategy is for the next round
+Any ML method could be used to decide the next query, for example random search, grid search, Bayesian optimisation with a GP and acquisition functions such as UCB, manual reasoning from plots, or custom surrogate models. This repository uses GP-based Bayesian optimisation throughout, with TuRBO trust regions and neural-network cross-checks for some functions (see "Running the notebooks" above). The task did not require submitting an optimiser, building a full optimisation model from scratch, or finding the global maximum of every function.
 
-Note: we will repeat this process each week, building your understanding iteratively, just as optimisation unfolds in real-world ML projects. Weekly reflections will support your final write-up or presentation
-
-Each week, we will receive a new output  for this point, growing your data set to 11 points.
-
-## What techniques can you use?
-
-You're free to use any ML method to decide what input to query next. Here are some examples:
-
-- Random search using np.random.uniform
-- Grid search to evaluate points on a grid, such as 10,000 points
-- Bayesian optimisation using a GP and acquisition functions such as UCB
-- Manual reasoning using scatter plots or your own insight to pick the next best point
-- Custom surrogate models to train an ML model to predict  and guide your query
-
-A note on what's NOT required
-In Stage 2 of the capstone project, you do not need to:
-
-- Write and submit an optimiser
-- Build a full optimisation model from scratch
-- Find the perfect global maximum for every function
-- Your task is to work with limited data, make smart decisions and reflect on your approach as you go.
-
-Descriptions of functions.
-
-Note all functions are Maximization optimization.
+All eight functions are maximisation problems.
 
 ## Function Shapes
 
-Function 1: X(10, 2), y(10,)
-Function 2: X(10, 2), y(10,)
-Function 3: X(15, 3), y(15,)
-Function 4: X(30, 4), y(30,)
-Function 5: X(20, 4), y(20,)
-Function 6: X(20, 5), y(20,)
-Function 7: X(30, 6), y(30,)
-Function 8: X(40, 8), y(40,)
+Observations per function: initial (round 0) and final (after 11 weekly rounds).
+
+| Function | Inputs | Initial points | Final points |
+|---|---|---|---|
+| 1 | 2 | 10 | 21 |
+| 2 | 2 | 10 | 21 |
+| 3 | 3 | 15 | 26 |
+| 4 | 4 | 30 | 41 |
+| 5 | 4 | 20 | 31 |
+| 6 | 5 | 20 | 31 |
+| 7 | 6 | 30 | 41 |
+| 8 | 8 | 40 | 51 |
 
 ## Function Descriptions
 
